@@ -59,6 +59,7 @@ La aplicación fue desarrollada en menos de 4 horas, enfocándose en la usabilid
 * **Integración con Twitter API:** Compartir de forma más directa y con *cards* personalizadas.
 * **Compartir en Redes Sociales, como Whatsapp** Compartir de forma directa con los seres "queridos" sus creaciones más ácidas.
 * **Moderación de Contenido:** Implementar el filtro de Azure para evitar *outputs* inapropiados.
+* **Implementar SunoApi** Para que cante el villancico creado por nuestro modelo.
 
 ## 🛠️ Herramientas y Tecnologías
 
