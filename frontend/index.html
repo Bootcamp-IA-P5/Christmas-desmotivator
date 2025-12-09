@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Desmotivador Navideño | Grinch Madrid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="masthead">
+        <h1 class="grinch-title">¡El Desmotivador Navideño! 🎄🚫</h1>
+        <p class="tagline">Tu cena madrileña se merece el villancico de queja que el Grinch crearía.</p>
+    </header>
+
+    <main class="container">
+        
+        <section id="input-section" class="card">
+            <h2>Dinos qué vas a sufrir en la mesa: 🤢</h2>
+            
+            <div class="input-group">
+                <label for="plato-principal">Plato Principal (ej. Sopa de Galets):</label>
+                <input type="text" id="plato-principal" placeholder="¿El plato que detestas?">
+            </div>
+            
+            <div class="input-group">
+                <label for="postre">Postre Empalagoso (ej. Roscón de Reyes):</label>
+                <input type="text" id="postre" placeholder="¿El dulce que te da dolor de muelas?">
+            </div>
+            
+            <button id="generar-btn" class="btn-primary">¡DESMOTIVAR CENA AHORA!</button>
+        </section>
+
+        <section id="output-section" class="card result-card hidden">
+            <h2 class="result-title">Tu Manifiesto de Boicot Grinch 😈</h2>
+            
+            <pre id="villancico-output" class="villancico-text">
+                </pre>
+
+            <p id="error-message" class="error-text hidden">⚠️ Error de conexión. El espíritu navideño ha bloqueado la API del Grinch.</p>
+            
+            <button id="compartir-btn" class="btn-share">¡COMPARTE EL BOICOT! 📢</button>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Proyecto Grinch-Madrid. Sarcasmo garantizado.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
