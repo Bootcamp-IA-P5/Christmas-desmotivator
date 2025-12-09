@@ -1,0 +1,148 @@
+/* Estilos Generales y Reseteo */
+body {
+    background-color: #1E4D2B; /* Fondo Grinch Principal */
+    color: #F0F0F0; /* Texto claro */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Tipografía de Título */
+h1, h2, h3 {
+    font-family: 'Creepster', cursive; /* Fuente malhumorada */
+    color: #CC3333; /* Rojo Sucio de Boicot */
+    margin-top: 10px;
+}
+
+h1 {
+    font-size: 3em;
+    padding-top: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.4); /* Pequeña capa oscura para contraste */
+    border-radius: 8px;
+}
+
+/* Campos de Entrada */
+input[type="text"], #villancico-output {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 3px solid #33CC33; /* Borde de Énfasis Grinch */
+    background-color: #0d2613; /* Fondo más oscuro para los campos */
+    color: #F0F0F0;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Botones */
+button {
+    background-color: #33CC33; /* Énfasis Grinch para el botón principal */
+    color: #1E4D2B; /* Texto oscuro sobre botón claro */
+    border: none;
+    padding: 15px 25px;
+    margin-top: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #4df04d; /* Un poco más brillante al pasar el ratón */
+}
+
+/* Área de Resultado */
+#output-section {
+    margin-top: 30px;
+    padding: 15px;
+    border-top: 2px dashed #CC3333;
+}
+
+#villancico-output {
+    white-space: pre-wrap; /* Mantiene los saltos de línea del villancico */
+    text-align: left;
+    font-family: monospace, sans-serif;
+    font-size: 1.1em;
+}
+
+/* Utilidad para ocultar al inicio */
+.hidden {
+    display: none;
+}
+
+/* --- Tipografía --- */
+
+/* Aseguramos que la tipografía de Grinch se aplique a los títulos */
+h1, h2, h3 {
+    font-family: 'Creepster', cursive; 
+    color: #CC3333; /* Rojo Sucio de Boicot */
+    text-shadow: 2px 2px 2px #000; /* Sombra sutil para destacar */
+}
+
+h1 {
+    font-size: 3.5em; /* Un poco más grande */
+    letter-spacing: 5px; /* Más espaciado para un toque cómico */
+    margin-bottom: 5px;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #33CC33; /* Verde para el subtítulo */
+}
+
+/* --- Formulario de Entrada --- */
+
+/* Estilo para las etiquetas (labels) */
+label {
+    display: block;
+    margin-top: 15px;
+    font-size: 1.1em;
+    color: #F0F0F0;
+    font-weight: bold;
+}
+
+/* --- Área de Resultado (#output-section) --- */
+
+#output-section {
+    margin-top: 40px;
+    padding: 25px 15px;
+    border: 5px double #CC3333; /* Doble borde rojo sucio */
+    background-color: #0d2613; /* Fondo muy oscuro para contraste */
+    box-shadow: 0 0 15px rgba(51, 204, 51, 0.5); /* Resplandor verde de maldad */
+}
+
+/* Estilo del texto del villancico (el <pre>) */
+#villancico-output {
+    width: 100%; /* Ocupa todo el contenedor */
+    padding: 15px;
+    background-color: transparent; /* Fondo transparente dentro del contenedor */
+    border: none;
+    color: #F0F0F0;
+    font-family: 'Courier New', Courier, monospace; /* Fuente de manifiesto/orden */
+    font-size: 1.2em;
+    line-height: 1.4;
+    text-align: left;
+    white-space: pre-wrap;
+    /* Quitamos el margen interior que ya tiene el contenedor */
+    margin: 0; 
+}
+
+/* --- Botón de Compartir --- */
+#compartir-btn {
+    background-color: #CC3333; /* Lo cambiamos a rojo para darle un aire más de "ALERTA" */
+    color: #F0F0F0;
+    border: 3px solid #33CC33;
+    padding: 12px 20px;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+#compartir-btn:hover {
+    background-color: #ff4d4d; /* Rojo más claro al pasar el ratón */
+}
