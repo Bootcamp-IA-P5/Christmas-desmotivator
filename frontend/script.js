@@ -60,7 +60,7 @@ async function generarVillancicoGrinch(platoPrincipal, postre) {
     // 2. Preparación de la carga útil (Payload) para FastAPI
     const payload = {
         //prompt: `Genera un villancico estilo Grinch basado en esta estructura: "${villancicoBase}". Hazlo más fluido y con rima, mencionando el ${platoPrincipal} y el ${postre}.`,
-        prompt: `${platoPrincipal} y ${postre}`,
+        prompt: `Genera un villancico con ${platoPrincipal} y ${postre}`,
         system_message: "Eres el Grinch, extremadamente sarcástico y odias la Navidad y la comida dulce."
     };
 
