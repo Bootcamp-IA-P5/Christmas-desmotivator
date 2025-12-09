@@ -1,3 +1,7 @@
+// API
+const API_URL = 'http://127.0.0.1:8000/ask_agent';
+
+
 // Selectores de Elementos
 const platoInput = document.getElementById('plato-principal');
 const postreInput = document.getElementById('postre');
@@ -34,7 +38,7 @@ const conclusiones = [
  * @param {string} platoPrincipal - El plato que el usuario odia.
  * @param {string} postre - El postre empalagoso.
  */
-function generarVillancicoGrinch(platoPrincipal, postre) {
+async function generarVillancicoGrinch(platoPrincipal, postre) {
     // 1. Funciones auxiliares para selección aleatoria
     const getRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
     
@@ -51,7 +55,45 @@ function generarVillancicoGrinch(platoPrincipal, postre) {
     c += ` y el espíritu se vaya por donde vino.`;
     
     // 4. Estructura final con saltos de línea
-    return `${a}\n${b1}\n${c}\n${b2}`;
+    const villancicoBase = `${a}\n${b1}\n${c}\n${b2}`;
+    
+    // 2. Preparación de la carga útil (Payload) para FastAPI
+    const payload = {
+        //prompt: `Genera un villancico estilo Grinch basado en esta estructura: "${villancicoBase}". Hazlo más fluido y con rima, mencionando el ${platoPrincipal} y el ${postre}.`,
+        prompt: `${platoPrincipal} y ${postre}`,
+        system_message: "Eres el Grinch, extremadamente sarcástico y odias la Navidad y la comida dulce."
+    };
+
+    // 3. Llamada a la API usando fetch
+    try {
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                // Indica que el cuerpo de la solicitud es JSON
+                'Content-Type': 'application/json' 
+            },
+            // Convierte el objeto JavaScript a una cadena JSON
+            body: JSON.stringify(payload) 
+        });
+
+        // 4. Manejo de la respuesta
+        if (!response.ok) {
+            // Si la respuesta no es 200 OK, lanza un error
+            throw new Error(`Error en la API: ${response.status} ${response.statusText}`);
+        }
+
+        // Asume que la API devuelve la respuesta en formato JSON
+        const data = await response.json(); 
+        
+        // Retorna el resultado que te dé tu API (dependerá de cómo la configuraste)
+        // Por ejemplo, si tu API devuelve { "resultado": "el villancico final" }
+        return data.response 
+
+    } catch (error) {
+        console.error("Hubo un problema al llamar a la API:", error);
+        // Retorna el villancico base o un mensaje de error si falla la API
+        return villancicoBase; 
+    }
 }
 
 // --- Evento al hacer clic en "DESMOTIVAR CENA AHORA" ---
@@ -65,11 +107,19 @@ generarBtn.addEventListener('click', () => {
     }
 
     // Generar el contenido
-    const villancico = generarVillancicoGrinch(platoPrincipal, postre);
+    const villancico = generarVillancicoGrinch(platoPrincipal, postre)
+        .then(villancico => {         
+            // Aquí puedes actualizar el DOM, mostrarlo en una etiqueta <p>, etc.
+            // document.getElementById('resultado').textContent = villancicoFinal;
+            // Mostrar el resultado en pantalla
+            villancicoOutput.textContent = villancico;
+            outputSection.classList.remove('hidden'); // Hace visible la sección de salida
+        })
+        .catch(error => {
+            // Esto captura cualquier error que ocurrió en la función (red, API, etc.)
+            console.error("❌ Falló la generación:", error);
+        });
     
-    // Mostrar el resultado en pantalla
-    villancicoOutput.textContent = villancico;
-    outputSection.classList.remove('hidden'); // Hace visible la sección de salida
 });
 
 
