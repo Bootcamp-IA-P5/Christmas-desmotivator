@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware 
 from pydantic import BaseModel
 import os
 from openai import AzureOpenAI
@@ -40,6 +41,30 @@ app = FastAPI(
     description="API para interactuar con un modelo de Azure OpenAI.",
     version="1.0.0",
     timeout=60.0
+)
+
+origins = [
+    # Si estás ejecutando tu JS desde un archivo local, necesitas el origen 'null'.
+    # ¡ADVERTENCIA! Solo usa 'null' si es para desarrollo local con archivos locales (file://).
+    "null", 
+    # Si estás ejecutando tu frontend desde un servidor local (Ej: vite, webpack, live-server)
+    "http://localhost",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    
+    # Añade aquí el origen específico de tu frontend si lo estás alojando en otro puerto
+    "http://127.0.0.1:5500", # Ejemplo de un puerto común para Live Server
+    # Si quieres permitir *cualquier* origen (NO RECOMENDADO para producción)
+    # "*", 
+]
+
+# 2. Añadir el Middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins, # Lista de orígenes permitidos
+    allow_credentials=True, # Permite cookies, encabezados de autorización, etc.
+    allow_methods=["*"],    # Permite todos los métodos (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"],    # Permite todos los encabezados HTTP
 )
 
 # Modelo para la solicitud entrante
